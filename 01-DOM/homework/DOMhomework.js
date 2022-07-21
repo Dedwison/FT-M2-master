@@ -68,11 +68,9 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // Tu código acá:
-  let newToDo = toDos.map(function (elemento, index) {
-    return buildToDo(elemento, index);
-  });
+  let array = toDos.map(buildToDo);
 
-  return newToDo;
+  return array;
 }
 
 // La función 'displayToDos' se va a encargar de que se vean los toDo's en pantalla
@@ -88,13 +86,11 @@ function displayToDos() {
   // Tu código acá:
   const toDoContainer = document.getElementById("toDoContainer");
   toDoContainer.innerHTML = "";
-  let array = buildToDos(toDoItems);
-  for (let i = 0; i < array.length; i++) {
-    toDoContainer.appendChild(array[i]);
-  }
-  // array.map(function (element) {
-  //   toDoContainer.appendChild(element);
-  // });
+  let aux = buildToDos(toDoItems);
+
+  aux.forEach((element) => {
+    toDoContainer.appendChild(element);
+  });
 }
 
 // La función 'addToDo' agregará un nuevo ToDo al array 'toDoItems'
@@ -141,6 +137,7 @@ function completeToDo(event) {
   const index = event.target.id;
   // Tu código acá:
   toDoItems[index].completeToDo();
+  displayToDos();
 }
 
 // Una vez que llegaste a este punto verificá que todos los tests pasen
@@ -158,8 +155,6 @@ function completeToDo(event) {
 // ********************************************** ----------- ********************************************** //
 
 // Acá debes insertar la llamada a 'displayToDos'
-
-displayToDos();
 
 // ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 if (typeof module !== "undefined") {
