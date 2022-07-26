@@ -111,4 +111,4 @@ whiteboard.draw = function (start, end, strokeColor, shouldBroadcast) {
     whiteboard.emit("draw", start, end, strokeColor);
   }
 };
-module.exports = whiteboard;
+// module.exports = whiteboard;
